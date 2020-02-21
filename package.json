@@ -1,0 +1,11 @@
+{
+  "name": "govwifi-shared-frontend",
+  "version": "0.0.1",
+  "description": "Frontend functionality shared by the GovWifi websites",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Stéphane Maniaci <stephane.maniaci@digital.cabinet-office.gov.uk>",
+  "license": "ISC"
+}
