@@ -14,3 +14,8 @@ that make GovWifi (admin, product page, docs).
 Checks whether cookie policy is defined and prompts the user with a
 dialog to define it if not. The dialog will be replace the node
 indicated by `elementId` (e.g `#cookie-banner`).
+
+## TODO
+
+- [ ] add tests;
+- [ ] add tooling (Babel) to allow cross-browser ES6 + minification.
