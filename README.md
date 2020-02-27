@@ -15,10 +15,10 @@ that make GovWifi (admin, product page, docs).
 ### Cookies
 Cookies functions are scoped to `GovWifi.cookies`.
 
-#### `GovWifi.cookies.checkCookiePolicy(elementId)`
+#### `GovWifi.cookies.checkCookiePolicy()`
 Checks whether cookie policy is defined and prompts the user with a
-dialog to define it if not. The dialog will be replace the node
-indicated by `elementId` (e.g `#cookie-banner`).
+dialog to define it if not. The dialog will prepend a
+`div#cookie-banner` node to the document's body.
 
 #### `GovWifi.cookies.isCategoryAllowed(categoryName)`
 Indicate whether the user has agreed to that category of cookies. The

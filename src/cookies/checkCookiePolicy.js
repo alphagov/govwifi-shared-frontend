@@ -96,11 +96,16 @@ function getCookie(cookieName) {
   return "";
 }
 
-function checkCookiePolicy(elementId) {
+function checkCookiePolicy() {
   const seen = getCookie("cookie_preferences_set");
 
   if (!seen || seen === "") {
-    document.getElementById(elementId).innerHTML = template;
+    const banner = document.createElement("div");
+    banner.id = "cookie-banner";
+
+    document.body.prepend(banner);
+
+    banner.innerHTML = template;
 
     document
       .getElementById("accept-cookies")
