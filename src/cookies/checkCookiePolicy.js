@@ -1,3 +1,5 @@
+const template = require("./cookie-banner.html");
+
 const DEFAULT = {
   tracking: false
 };
@@ -95,11 +97,11 @@ function getCookie(cookieName) {
   return "";
 }
 
-function checkCookiePolicy() {
+function checkCookiePolicy(elementId) {
   const seen = getCookie("cookie_preferences_set");
 
   if (!seen || seen === "") {
-    document.getElementById("cookie-banner").style.display = "initial";
+    document.getElementById(elementId).innerHTML = template;
 
     document
       .getElementById("accept-cookies")
@@ -111,4 +113,7 @@ function checkCookiePolicy() {
   }
 }
 
-module.exports = checkCookiePolicy;
+module.exports = {
+  checkCookiePolicy,
+  isAllowed
+};

@@ -1,5 +1,5 @@
-const checkCookiePolicy = require("./checkCookiePolicy");
+const cookies = require("./cookies/checkCookiePolicy");
 
-module.exports = {
-  checkCookiePolicy
+window.GovWifi = {
+  cookies
 };
