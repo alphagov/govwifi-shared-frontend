@@ -1,9 +1,11 @@
 {
   "name": "govwifi-shared-frontend",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Frontend functionality shared by the GovWifi websites",
   "main": "dist/govwifi-shared-frontend.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepublishOnly": "webpack"
   },
