@@ -24,10 +24,7 @@ function isRecognised(cookieName) {
   return !!getCookieCategory(cookieName);
 }
 
-function isAllowed(cookieName) {
-  const category = getCookieCategory(cookieName);
-
-  if (!category) return false;
+function isCategoryAllowed(category) {
   if (category === "essential") return true;
 
   const policy = getCookiePreferences();
@@ -36,7 +33,9 @@ function isAllowed(cookieName) {
 }
 
 function setCookie(cookieName, cookieValue) {
-  if (isAllowed(cookieName)) {
+  const category = getCookieCategory(cookieName);
+
+  if (isCategoryAllowed(category)) {
     document.cookie = cookieName + "=" + cookieValue;
   } else {
     // we don't want to write random expiring cookies
@@ -115,5 +114,5 @@ function checkCookiePolicy(elementId) {
 
 module.exports = {
   checkCookiePolicy,
-  isAllowed
+  isCategoryAllowed
 };
