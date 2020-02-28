@@ -7,7 +7,6 @@ const DEFAULT = {
 const COOKIES = {
   tracking: ["_ga", "_gid"],
   essential: [
-    "seen_cookie_message",
     "cookie_preferences_set",
     "cookie_preferences",
     "_govwifi_admin_session"
