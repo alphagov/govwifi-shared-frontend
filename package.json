@@ -15,5 +15,8 @@
     "html-loader": "^0.5.5",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "js-cookie": "^2.2.1"
   }
 }

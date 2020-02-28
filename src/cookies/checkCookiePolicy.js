@@ -1,4 +1,5 @@
 const template = require("./cookie-banner.html");
+const Cookies = require("js-cookie");
 
 const DEFAULT = {
   tracking: false
@@ -35,7 +36,7 @@ function setCookie(cookieName, cookieValue) {
   const category = getCookieCategory(cookieName);
 
   if (isCategoryAllowed(category)) {
-    document.cookie = cookieName + "=" + cookieValue;
+    Cookies.set(cookieName, cookieValue, { expires: 1, path: "" });
   } else {
     // we don't want to write random expiring cookies
     isRecognisedCookie(cookieName) && disableCookie(cookieName);
@@ -43,7 +44,7 @@ function setCookie(cookieName, cookieValue) {
 }
 
 function disableCookie(cookieName) {
-  document.cookie = cookieName + "=;expires=" + new Date(0).toUTCString();
+  Cookies.remove(cookieName);
 }
 
 function setAllCookiesTo(bool) {
@@ -74,29 +75,13 @@ function setCookiePreferences(policy) {
 }
 
 function getCookiePreferences() {
-  if (!getCookie("cookie_preferences_set")) return DEFAULT;
+  if (!Cookies.get("cookie_preferences_set")) return DEFAULT;
 
-  return JSON.parse(getCookie("cookie_preferences"));
-}
-
-function getCookie(cookieName) {
-  var name = cookieName + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var cookiesArray = decodedCookie.split(";");
-  for (var i = 0; i < cookiesArray.length; i++) {
-    var cookie = cookiesArray[i];
-    while (cookie.charAt(0) == " ") {
-      cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(name) == 0) {
-      return cookie.substring(name.length, cookie.length);
-    }
-  }
-  return "";
+  return JSON.parse(Cookies.get("cookie_preferences"));
 }
 
 function checkCookiePolicy() {
-  const seen = getCookie("cookie_preferences_set");
+  const seen = Cookies.get("cookie_preferences_set");
 
   if (!seen || seen === "") {
     const banner = document.createElement("div");
