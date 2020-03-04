@@ -1,4 +1,4 @@
-const cookies = require("./cookies/checkCookiePolicy");
+const cookies = require("./cookies");
 
 window.GovWifi = {
   cookies
