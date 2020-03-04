@@ -77,10 +77,21 @@ function getCookiePreferences() {
   return JSON.parse(Cookies.get("cookie_preferences"));
 }
 
-function checkCookiePolicy() {
+function hideBanner() {
+  document.getElementById("cookie-banner").style.display = "none";
+}
+
+function cookiePreferencesDefined() {
   const seen = Cookies.get("cookie_preferences_set");
 
-  if (!seen || seen === "") {
+  return !!seen;
+}
+
+function checkCookiePolicy() {
+  const acceptAllCookies = () => allowCategory("analytics", true);
+  const refuseAllCookies = () => allowCategory("analytics", false);
+
+  if (!cookiePreferencesDefined()) {
     const banner = document.createElement("div");
     banner.id = "cookie-banner";
 
@@ -88,17 +99,21 @@ function checkCookiePolicy() {
 
     banner.innerHTML = template;
 
-    document
-      .getElementById("accept-cookies")
-      .addEventListener("click", acceptAllCookies);
+    document.getElementById("accept-cookies").addEventListener("click", () => {
+      acceptAllCookies();
+      hideBanner();
+    });
 
-    document
-      .getElementById("refuse-cookies")
-      .addEventListener("click", refuseAllCookies);
+    document.getElementById("refuse-cookies").addEventListener("click", () => {
+      refuseAllCookies();
+      hideBanner();
+    });
   }
 }
 
 module.exports = {
+  allowCategory,
   checkCookiePolicy,
+  cookiePreferencesDefined,
   isCategoryAllowed
 };
