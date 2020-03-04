@@ -115,5 +115,6 @@ module.exports = {
   allowCategory,
   checkCookiePolicy,
   cookiePreferencesDefined,
-  isCategoryAllowed
+  getCookiePreferences,
+  isCategoryAllowed,
 };
