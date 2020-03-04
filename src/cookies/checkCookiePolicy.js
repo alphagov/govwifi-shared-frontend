@@ -36,7 +36,7 @@ function setCookie(cookieName, cookieValue) {
   const category = getCookieCategory(cookieName);
 
   if (isCategoryAllowed(category)) {
-    Cookies.set(cookieName, cookieValue, { expires: 1, path: "" });
+    Cookies.set(cookieName, cookieValue, { expires: 365, path: "" });
   } else {
     // we don't want to write random expiring cookies
     isRecognisedCookie(cookieName) && disableCookie(cookieName);
