@@ -15,6 +15,11 @@ that make GovWifi (admin, product page, docs).
 ### Cookies
 Cookies functions are scoped to `GovWifi.cookies`.
 
+#### `GovWifi.cookies.allowCategory(category, isAllowed)`
+Sets a single `category` to a boolean `isAllowed`. If `isAllowed` is
+falsy then all cookies belonging to that category are wiped. If the
+category isn't recognised, nothing happens.
+
 #### `GovWifi.cookies.checkCookiePolicy()`
 Checks whether cookie policy is defined and prompts the user with a
 dialog to define it if not. The dialog will prepend a

@@ -54,31 +54,21 @@ function removeCookie(cookieName) {
   Cookies.remove(cookieName);
 }
 
-function setAllCookiesTo(bool) {
-  return Object.keys(DEFAULT).reduce((policy, category) => {
-    return Object.assign(policy, { [category]: bool });
-  }, {});
+function allowCategory(category, isAllowed) {
+  if (!COOKIES[category]) return;
+
+  const preferences = getCookiePreferences();
+
+  if (!isAllowed) Object.keys(COOKIES[category]).forEach(removeCookie);
+
+  setCookiePreferences(
+    Object.assign({}, preferences, { [category]: isAllowed })
+  );
 }
-
-function disableCookieCategory(category) {
-  if (category === "essential") return;
-
-  COOKIES[category].forEach(disableCookie);
-}
-
-const refuseAllCookies = () => {
-  setCookiePreferences(setAllCookiesTo(false));
-
-  Object.keys(COOKIES).forEach(disableCookieCategory);
-};
-
-const acceptAllCookies = () => setCookiePreferences(setAllCookiesTo(true));
 
 function setCookiePreferences(policy) {
   setCookie("cookie_preferences", JSON.stringify(policy));
   setCookie("cookie_preferences_set", true);
-
-  document.getElementById("cookie-banner").style.display = "none";
 }
 
 function getCookiePreferences() {
