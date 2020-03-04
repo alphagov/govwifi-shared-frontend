@@ -1,6 +1,8 @@
 const template = require("./cookie-banner.html");
 const Cookies = require("js-cookie");
 
+const BASE_DOMAIN = "wifi.service.gov.uk";
+
 const DEFAULT = {
   tracking: false
 };
@@ -34,9 +36,14 @@ function isCategoryAllowed(category) {
 
 function setCookie(cookieName, cookieValue) {
   const category = getCookieCategory(cookieName);
+  const isDev = window.location.hostname === "localhost";
 
   if (isCategoryAllowed(category)) {
-    Cookies.set(cookieName, cookieValue, { expires: 365, path: "" });
+    Cookies.set(cookieName, cookieValue, {
+      expires: 365,
+      path: "",
+      domain: isDev ? undefined : BASE_DOMAIN
+    });
   } else {
     // we don't want to write random expiring cookies
     isRecognisedCookie(cookieName) && disableCookie(cookieName);
