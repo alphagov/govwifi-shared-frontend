@@ -46,11 +46,11 @@ function setCookie(cookieName, cookieValue) {
     });
   } else {
     // we don't want to write random expiring cookies
-    isRecognisedCookie(cookieName) && disableCookie(cookieName);
+    isRecognisedCookie(cookieName) && removeCookie(cookieName);
   }
 }
 
-function disableCookie(cookieName) {
+function removeCookie(cookieName) {
   Cookies.remove(cookieName);
 }
 
