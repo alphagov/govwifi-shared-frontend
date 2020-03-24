@@ -34,6 +34,16 @@ function isCategoryAllowed(category) {
   return policy[category];
 }
 
+function setCategoryAllowed(category, value) {
+  const policy = getCookiePreferences();
+
+  if (!Object.keys(policy).includes(category)) return;
+
+  const amendedPolicy = Object.assign({}, policy, { [category]: value });
+
+  setCookiePreferences(amendedPolicy);
+}
+
 function setCookie(cookieName, cookieValue) {
   const category = getCookieCategory(cookieName);
   const isDev = window.location.hostname === "localhost";
@@ -110,5 +120,6 @@ function checkCookiePolicy() {
 
 module.exports = {
   checkCookiePolicy,
-  isCategoryAllowed
+  isCategoryAllowed,
+  setCategoryAllowed
 };

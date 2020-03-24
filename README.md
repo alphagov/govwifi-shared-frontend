@@ -25,6 +25,10 @@ Indicate whether the user has agreed to that category of cookies. The
 only category at the moment is `analytics` (and `essential`, but that
 will always return true).
 
+#### `GovWifi.cookies.setCategoryAllowed(categoryName, isAllowed)`
+Amend the cookie policy to allow or disable the given
+`categoryName`. If `categoryName` is not recognised do nothing.
+
 ## TODO
 
 - [X] add webpack to streamline distribution;
