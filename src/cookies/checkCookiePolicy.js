@@ -88,7 +88,9 @@ function setCookiePreferences(policy) {
   setCookie("cookie_preferences", JSON.stringify(policy));
   setCookie("cookie_preferences_set", true);
 
-  document.getElementById("cookie-banner").style.display = "none";
+  const banner = document.getElementById("cookie-banner");
+
+  if (banner) banner.style.display = "none";
 }
 
 function getCookiePreferences() {
