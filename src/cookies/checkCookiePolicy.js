@@ -34,6 +34,16 @@ function isCategoryAllowed(category) {
   return policy[category];
 }
 
+function setCategoryAllowed(category, value) {
+  const policy = getCookiePreferences();
+
+  if (!Object.keys(policy).includes(category)) return;
+
+  const amendedPolicy = Object.assign({}, policy, { [category]: value });
+
+  setCookiePreferences(amendedPolicy);
+}
+
 function setCookie(cookieName, cookieValue) {
   const category = getCookieCategory(cookieName);
   const isDev = window.location.hostname === "localhost";
@@ -78,7 +88,9 @@ function setCookiePreferences(policy) {
   setCookie("cookie_preferences", JSON.stringify(policy));
   setCookie("cookie_preferences_set", true);
 
-  document.getElementById("cookie-banner").style.display = "none";
+  const banner = document.getElementById("cookie-banner");
+
+  if (banner) banner.style.display = "none";
 }
 
 function getCookiePreferences() {
@@ -110,5 +122,6 @@ function checkCookiePolicy() {
 
 module.exports = {
   checkCookiePolicy,
-  isCategoryAllowed
+  isCategoryAllowed,
+  setCategoryAllowed
 };
