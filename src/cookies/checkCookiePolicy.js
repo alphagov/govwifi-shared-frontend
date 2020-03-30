@@ -51,7 +51,7 @@ function setCookie(cookieName, cookieValue) {
   if (isCategoryAllowed(category)) {
     Cookies.set(cookieName, cookieValue, {
       expires: 365,
-      path: "",
+      path: "/",
       domain: isDev ? undefined : BASE_DOMAIN
     });
   } else {
