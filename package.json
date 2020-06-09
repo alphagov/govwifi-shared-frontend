@@ -1,6 +1,6 @@
 {
   "name": "govwifi-shared-frontend",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Frontend functionality shared by the GovWifi websites",
   "main": "dist/govwifi-shared-frontend.js",
   "files": [
