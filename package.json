@@ -12,7 +12,7 @@
   "author": "Stéphane Maniaci <stephane.maniaci@digital.cabinet-office.gov.uk>",
   "license": "MIT",
   "devDependencies": {
-    "html-loader": "^1.1.0",
+    "html-loader": "^1.2.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
