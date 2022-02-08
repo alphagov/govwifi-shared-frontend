@@ -97,7 +97,7 @@ Click ["Draft new release"](https://github.com/alphagov/govwifi-shared-frontend/
 
 ### Update GovWifi repos
 
-One the new version of the project has been released in GitHub, we need to update the `package.json` files in the GovWifi repos which use `govwifi-shared-frontend`.
+Once the new version of the project has been released in GitHub, we need to update the `package.json` files in the GovWifi repos which use `govwifi-shared-frontend`.
 
 * `govwifi-admin`
 * `govwifi-product-page`
@@ -115,7 +115,7 @@ For each of these projects, complete the following steps:
     ```
    Use the link address of the `.tgz` file found in the "Assets" section of the `govwifi-shared-frontend` ["Releases"](https://github.com/alphagov/govwifi-shared-frontend/releases) page. 
 3. Run `npm install` to pull in the new release. 
-4. Test the app locally to see if the update has caused an breaking changes.
+4. Test the app locally to see if the update has caused any breaking changes.
 5. Commit the changes (this should just be `package.json` and `package-lock.json`) and raise a PR.
 6. Once the PR is merged follow the stated deployment process for the repo.
 
