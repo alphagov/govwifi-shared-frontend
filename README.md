@@ -59,29 +59,13 @@ The release package must be uploaded to GitHub as part of the release process so
 
     This creates a “distribution” folder or `dist`. The `dist` contents are configured via webpack in the [`webpack.config.js`](webpack.config.js) file.
 
-2. Create an empty folder called `package` in the root project directory:
+2. Use `npm` to generate a compressed distribution package of the JS code which we will upload to GitHub:
  
     ```bash
-    $ mkdir package 
+    $ npm pack 
     ```
     
-    This will become the compressed package we upload to GitHub.
-
-3. Copy `dist/govwifi-shared-frontend.js`, `package.json`, `README.md`, and `LICENSE` into `package/`: 
-
-    ```bash
-    $ cp ./{dist/govwifi-shared-frontend.js,package.json,README.md,LICENSE} package
-    ```
- 
-4. From the root project directory, create a `.tgz` file of the `package/` folder, named `govwifi-shared-frontend-X.X.X` (where `X.X.X` is the release version for your release):
- 
-    ```bash
-     $ tar -cvf govwifi-shared-frontend-X.X.X.tgz package/
-    ```
-
-    This creates a compressed distribution package of the JS code, `package.json`, `README.md`, and `LICENSE` which we upload to GitHub. 
-
-    The unzipped file must be named `package` in order for it be installed and used by other GovWifi repos.
+    This will create a `.tgz` file at the directory’s root with a naming structure like this: `{name}-{release-version}.tgz`. 
 
 ### Update Github release version
 
@@ -93,7 +77,7 @@ Click ["Draft new release"](https://github.com/alphagov/govwifi-shared-frontend/
 2. Use the release version number for the "Release title"
 3. Add a useful description of the changes in the release, including links to Dependabot PRs if applicable.
 4. Click on "Attach binaries by dropping them here or selecting them."
-5. Attach the `govwifi-shared-frontend-X.X.X.tgz` file created earlier.
+5. Attach the `govwifi-shared-frontend-{release-version}.tgz` file created earlier.
 
 ### Update GovWifi repos
 
@@ -110,7 +94,7 @@ For each of these projects, complete the following steps:
     ```json
       "dependencies": {
         ...
-        "govwifi-shared-frontend": "https://github.com/alphagov/govwifi-shared-frontend/releases/download/vX.X.X/govwifi-shared-frontend-X.X.X.tgz"
+        "govwifi-shared-frontend": "https://github.com/alphagov/govwifi-shared-frontend/releases/download/v{release-version}/govwifi-shared-frontend-{release-version}.tgz"
       },
     ```
    Use the link address of the `.tgz` file found in the "Assets" section of the `govwifi-shared-frontend` ["Releases"](https://github.com/alphagov/govwifi-shared-frontend/releases) page. 
