@@ -1,4 +1,4 @@
-const template = require("./cookie-banner.html");
+const template = require("html-loader!./cookie-banner.html");
 const Cookies = require("js-cookie");
 
 const BASE_DOMAIN = "wifi.service.gov.uk";
